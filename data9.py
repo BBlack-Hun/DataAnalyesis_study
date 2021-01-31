@@ -145,5 +145,87 @@ f.reverse()
 print("남자 리스트 ", m)
 print("여자 리스트 ", f)
 # %%
-### 항아리 모양 그래프 그리기 - 데이터 정제-1
+### 항아리 모양 그래프 그리기 - 데이터 정제-2
 ### 성별별로 데이터를 나눠서 저장
+import csv
+
+f = open('age3.csv')
+data = csv.reader(f)
+### 각 성별의 값을 저장하기 위한 리스트 생성
+m = list()
+f = list()
+
+for row in data:
+    if '신도림' in row[0]:
+        for i in row[3:104]:
+            m.append(int(i))
+        for i in row[106:]:
+            f.append(int(i))
+
+print("남자 리스트 ", m)
+print("여자 리스트 ", f)
+# %%
+### 두 리스트를 한 그래프로 표현
+import matplotlib.pyplot as plt
+plt.barh(range(101), m)
+plt.barh(range(101), f)
+plt.show()
+# %%
+import csv
+import matplotlib.pyplot as plt
+
+f = open('age3.csv')
+data = csv.reader(f)
+### 각 성별의 값을 저장하기 위한 리스트 생성
+m = list()
+f = list()
+
+for row in data:
+    if '신도림' in row[0]:
+        for i in row[3:104]:
+            m.append(int(i))
+        for i in row[106:]:
+            f.append(-int(i))
+
+print("남자 리스트 ", m)
+print("여자 리스트 ", f)
+
+plt.rc('font', family="NanumGothic")
+plt.rcParams["axes.unicode_minus"] = False
+plt.title("신도림 지역의 남녀 성별 인구 분포")
+plt.barh(range(101), m, label="남성")
+plt.barh(range(101), f, label="여성")
+plt.legend()
+plt.show()
+# %%
+### 우리동네 인구구조를 항아리 모양으로 그리기
+### 필요한 모듈 import
+import csv
+import matplotlib.pyplot as plt
+plt.style.use('ggplot')
+
+f = open('age3.csv')
+data = csv.reader(f)
+
+### 남여 인구수를 저장할 리스트 선언
+m = list()
+f = list()
+
+### 지역을 입력 받기 위한 name 변수 선언
+name = input("찾고 싶은 지역의 이름을 알려주세요: ")
+for row in data:
+    if name in row[0]:
+        for i in row[3:104]:
+            m.append(-int(i))
+        for i in row[106:]:
+            f.append(int(i))
+
+plt.rc('font', family='NanumGothic')
+plt.rcParams['axes.unicode_minus'] = False
+plt.title(name+' 지역의 남녀 성별 인구 분포')
+plt.barh(range(101), m, label="남성")
+plt.barh(range(101), f, label="여성")
+plt.legend()
+plt.show()
+
+# %%
