@@ -140,11 +140,14 @@ for row in data:
     ### 사용자가 입력한 지역이 존재할 경우
     if name in row[0]:
         for i in range(3, 104):
+            ### , 붙은 문자열은 int형으로 형변환이 안되기 때문에 문자열의 replace 함수를 이용하여 ,를 없애는 과정 그리고 각 성별의 리스트에 더함
             m.append(int(row[i].replace(',','')))
             f.append(int(row[i+103].replace(',','')))
             size.append(math.sqrt(int(row[i].replace(',',''))+ int(row[i+103].replace(',','')) ))
         break
+### 그래프의 스타일 지정
 plt.style.use('ggplot')
+### 한글 폰트 지정 저는 D2Coding font를 사용
 plt.rc('font', family='D2Coding')
 plt.figure(figsize=(10,5), dpi=300)
 plt.title(name +' 지역의 성별 인구 그래프')

@@ -127,3 +127,4 @@ plt.axis('equal')
 plt.pie(size, labels=['남', '여'], autopct="%.1f%%", colors=color, startangle=90)
 plt.title(name+' 지역의 남녀 성별 비율')
 plt.show()
+# %%
