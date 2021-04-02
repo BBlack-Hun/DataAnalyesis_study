@@ -369,3 +369,12 @@ print('\n')
 df.loc['서준', '체육'] = 100
 print(df)
 # %%
+# 데이터프레임 df의 원소 여러 개를 변경하는 방법: '서준'의 '음악', '체육' 점수
+df.loc['서준', ['음악', '체육']] = 50
+print(df)
+print('\n')
+
+df.loc['서준', ['음악', '체육']] = 100, 50
+print(df)
+# %%
+# 행, 열 위치 바꾸기 : DataFrame 객체.transpose() 또는 DataFrame.T
