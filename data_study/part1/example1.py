@@ -307,3 +307,65 @@ print('\n')
 df['국어'] = 80
 print(df)
 # %%
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+
+# DataFrame() 함수로 데이터프레임 변횐. 변수 df 에 저장
+exam_data = {'이름' : ['서준', '우현', '안아'],
+             '수학' : [90, 80, 70],
+             '영어' : [98,89, 95],
+             '음악' : [85, 95, 100],
+             '체육' : [100, 90, 80]}
+
+df = pd.DataFrame(exam_data)
+print(df)
+print('\n')
+
+# 새로운 행(row) 추가 - 같은 원소 값 입력
+df.loc[3] = 0
+print(df)
+print('\n')
+
+# 새로운 행(row) 추가 - 원소 값 여러 개의 배열
+df.loc[4] = ['동규', 90,80,70,60]
+print(df)
+print('\n')
+
+# 새로운 행(row) 추가 - 기존 행 복사
+df.loc['행5'] = df.loc[3]
+print(df)
+# %%
+# 원소 값 변경
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+
+# DataFrame() 함수로 데이터프레임 변횐. 변수 df에 저장
+exam_data = {'이름' : ['서준', '우현', '인아'],
+             '수학' : [90, 80, 70],
+             '영어' : [98,89,95],
+             '음악' : [85, 95 ,100],
+             '체육' : [100, 90, 90]}
+
+df = pd.DataFrame(exam_data)
+print(df)
+print('\n')
+
+# '이름' 열을 새올운 인덱스로 지정하고, df 객체에 변경사항을 변경
+df.set_index('이름', inplace=True)
+print(df)
+print('\n')
+
+# 데이터프레임 df의 특정 원소를 변경하는 방법: '서준'의 '체육' 점수
+df.iloc[0][3] = 80
+print(df)
+print('\n')
+
+df.loc['서준']['체육'] = 90
+print(df)
+print('\n')
+
+df.loc['서준', '체육'] = 100
+print(df)
+# %%
