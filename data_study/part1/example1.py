@@ -434,3 +434,140 @@ import pandas as pd
 
 # 딕셔너리 정의
 dict_data = {'c0':[1,2,3], 'c1':[4,5,6], 'c2':[7,8,9] , }
+
+df = pd.DataFrame(dict_data, index=['r0', 'r1', 'r2'])
+print(df)
+print('\n')
+
+# 인덱스를 [ro, r1, r2, r3]로 재지정
+new_index = ['r0','r1', 'r2', 'r3', 'r4']
+ndf = df.reindex(new_index)
+print(ndf)
+print('\n')
+
+# reindex로 발생한 NaN 값을 숫자 0으로 채우가ㅣ
+new_index = ['r0', 'r1', 'r2', 'r3', 'r4']
+ndf2 = df.reindex(new_index, fill_value=0)
+print(ndf2)
+
+# %%
+# 행 인덱스 초기화
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+
+# 딕셔너리 정의
+dict_data = {'c0':[1,2,3], 'c1':[4,5,6], 'c2':[7,8,9], 'c3':[10,11,12], 'c4':[13,14,15]}
+
+# 딕셔너리를 데이터프레임으로 변환. 변수 df에 저장.
+df = pd.DataFrame(dict_data, index=['r0','r1','r2'])
+print(df)
+print('\n')
+
+# 행인덱스를 정수형으로 초기화
+ndf = df.reset_index()
+print(ndf)
+# %%
+# 데이터 프레임 정렬
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+
+# 딕셔너리 정의
+dict_data = {'c0': [1,2,3], 'c1': [4,5,6], 'c2': [7,8,9], 'c3': [10,11,12], 'c4':[13,14,15]}
+
+# 딕셔너리를 데이터프레임으로 변환, 변수 df에 저장
+df = pd.DataFrame(dict_data, index=['r0', 'r1', 'r2'])
+print(df)
+print('\n')
+
+# 내림차순으로 행 인덱스 정렬
+ndf = df.sort_index(ascending=False)
+print(ndf)
+# %%
+# 열 기준 정렬
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+
+# 딕셔너리 정의
+dict_data = {'c0': [1,2,3], 'c1': [4, 5, 6], 'c2': [7,8,9], 'c3':[10,11,12], 'c4':[13,14,15]}
+
+# 딕셔너리를 데이터프레임으로 변환. 변수 df에 저장
+df = pd.DataFrame(dict_data, index=['r0', 'r1', 'r2'])
+print(df)
+print('\n')
+
+# c1열을 기준으로 내림차순 정렬
+ndf = df.sort_values(by='c1', ascending=False)
+print(ndf)
+# %%
+# 시리즈를 숫자로 나누기
+# -*- coding: utf-8 -*-
+
+# 라이브러리를 불러옴
+import pandas as pd
+
+# 딕셔너리 데이터로 판다르 시리즈 만들기
+student1 = pd.Series({'국어':100, '영어':80, '수학':90})
+print(student1)
+print('\n')
+
+# 학생의 과목별 점수를 200으로 나누기
+percentage = student1/200
+
+print(percentage)
+print('\n')
+print(type(percentage))
+
+# %%
+# 시리즈의 사칙연산
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+
+# 딕셔너리 데이터로 판다르 시리즈 만들기
+student1 = pd.Series({'국어':100, '영어':80, '수학':90})
+student2=  pd.Series({'수학':80, '국어':90, '영어':80})
+print(student1)
+print('\n')
+print(student2)
+print('\n')
+
+# 두 학생의 과목별 점수로 사칙연산수행
+addiction = student1 + student2
+substraction = student1 - student2
+multiplication = student1 * student2
+division = student1 / student2
+print(type(division))
+print('\n')
+# 사칙연산 결과를 데이터프레임으로 합칙(시리즈 -> 데이터프레임)
+result =  pd.DataFrame([addiction, substraction, multiplication, division], index=['덧셈', '뺄셈', '곱셈', '나눗셈'])
+print(result)
+# %%
+# NAN값이 있는 시리즈 연산
+# -*- coding: utf-8 -*-
+
+import pandas as pd
+import numpy as np
+
+# 딕셔너리 데이터로 판다스 시리즈 만들기
+student1 = pd.Series({'국어':np.nan, '수학': 80, '영어':90})
+student2 = pd.Series({'수학':80, '국어':90})
+
+print(student1)
+print('\n')
+print(student2)
+print('\n')
+
+# 두 학생의 과목 점수로 사칙연산 수행하기
+addiction = student1 + student2
+substraction = student1 - student2
+multiplication = student1 * student2
+division = student1 / student2
+print(type(division))
+print('\n')
+# 사칙연산 결과를 데이터프레임으로 합칙(시리즈 -> 데이터프레임)
+result =  pd.DataFrame([addiction, substraction, multiplication, division], index=['덧셈', '뺄셈', '곱셈', '나눗셈'])
+print(result)
+# %%
